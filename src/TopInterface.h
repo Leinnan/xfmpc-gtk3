@@ -2,11 +2,12 @@
 #define TOPINTERFACE_H
 #include <gtkmm.h>
 #include "SettingsButtonMenu.h"
+#include "MpdConnection.h"
 
 class TopInterface : public Gtk::Box
 {
 public:
-    TopInterface();
+    TopInterface(MpdConnection * p_mpd_connection_pointer);
     ~TopInterface();
 private:
     Gtk::Box controls_box;
@@ -23,6 +24,7 @@ private:
     Gtk::Label title;
     Gtk::Label subtitle;
     SettingsButtonMenu settings_button_menu;
+    MpdConnection * mpd_connection_pointer;
 };
 
 #endif // TOPINTERFACE_H

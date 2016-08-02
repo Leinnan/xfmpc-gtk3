@@ -3,8 +3,10 @@ link_directories(
 
 include_directories(
     ${GTKMM_INCLUDE_DIRS}  )
-    
-    
+
+set(LIBMPDCLIENT_LIBRARY /usr/lib/libmpdclient.so.2)
+
+
 file(GLOB_RECURSE SRCS ./*)
 
 add_executable(../xfmpc # name of the executable on Windows will be example.exe 
@@ -12,4 +14,4 @@ add_executable(../xfmpc # name of the executable on Windows will be example.exe
     ${SRCS} )
 
 target_link_libraries(../xfmpc 
-    ${GTKMM_LIBRARIES}  )
+    ${GTKMM_LIBRARIES}  ${LIBMPDCLIENT_LIBRARY})
