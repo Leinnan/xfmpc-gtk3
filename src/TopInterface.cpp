@@ -52,6 +52,8 @@ TopInterface::TopInterface(MpdConnection * p_mpd_connection_pointer)
     progress_box.add(progress_bar);
     
     
+    volume_button.set_label("MADLEN UMYJ STOPY!");
+    
     controls_box.pack_start(button_prev, false, false, 0);
     controls_box.pack_start(button_play, false, false, 0);
     controls_box.pack_start(button_pause, false, false, 0);
