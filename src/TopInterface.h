@@ -3,18 +3,22 @@
 #include <gtkmm.h>
 #include "SettingsButtonMenu.h"
 #include "MpdConnection.h"
+#include <mpd/client.h>
 
 class TopInterface : public Gtk::Box
 {
 public:
     TopInterface(MpdConnection * p_mpd_connection_pointer);
     ~TopInterface();
+    void UpdateButtonsVisibility();
+    void UpdateTitle();
 private:
     Gtk::Box controls_box;
     Gtk::Box more_controls_box;
     Gtk::Box info_box;
     Gtk::Button button_prev;
-    Gtk::Button button_pp;
+    Gtk::Button button_play;
+    Gtk::Button button_pause;
     Gtk::Button button_stop;
     Gtk::Button button_next;
     Gtk::MenuButton settings_button;

@@ -14,10 +14,10 @@ public:
     ~MainWindow();
     MpdConnection GetMpdConnection();
 private:
+    MpdConnection my_mpd_connection;
     Gtk::Box vbox;
     TopInterface top_interface;
     BottomInterface bottom_interface;
-    MpdConnection my_mpd_connection;
 
 };
 

@@ -13,6 +13,7 @@ MainWindow::MainWindow()
     vbox.pack_start(bottom_interface, true, true, 0);
     show_all();
     
+    
 }
 
 MainWindow::~MainWindow()
