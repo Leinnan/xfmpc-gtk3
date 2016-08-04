@@ -37,7 +37,7 @@ void MpdConnection::PauseSong()
 void MpdConnection::PlaySong()
 {
     this->UpdateConnection();
-    mpd_send_pause(conn, false);
+    mpd_send_play(conn);
     mpd_response_finish(conn);
 }
 
