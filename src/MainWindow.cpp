@@ -11,7 +11,10 @@ MainWindow::MainWindow()
     add(vbox);
     vbox.pack_start(top_interface, false, false, 0);
     vbox.pack_start(bottom_interface, true, true, 0);
-    show_all();
+    show();
+    vbox.show();
+    
+    //show_all();
     
     
 }

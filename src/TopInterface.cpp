@@ -44,7 +44,11 @@ TopInterface::TopInterface(MpdConnection * p_mpd_connection_pointer)
     button_stop.signal_clicked().connect(sigc::mem_fun((*mpd_connection_pointer), &MpdConnection::StopSong));
     button_next.signal_clicked().connect(sigc::mem_fun((*mpd_connection_pointer), &MpdConnection::NextSong));
 
-    //button_prev.signal_clicked().connect(sigc::mem_fun(this, &TopInterface::UpdateButtonsVisibility));
+    button_prev.signal_clicked().connect(sigc::mem_fun(this, &TopInterface::UpdateButtonsVisibility));
+    button_play.signal_clicked().connect(sigc::mem_fun(this, &TopInterface::UpdateButtonsVisibility));
+    button_pause.signal_clicked().connect(sigc::mem_fun(this, &TopInterface::UpdateButtonsVisibility));
+    button_stop.signal_clicked().connect(sigc::mem_fun(this, &TopInterface::UpdateButtonsVisibility));
+    button_next.signal_clicked().connect(sigc::mem_fun(this, &TopInterface::UpdateButtonsVisibility));
 
     progress_bar.set_text ("0:00 / 0:00");
     progress_bar.set_show_text (true);
@@ -52,7 +56,6 @@ TopInterface::TopInterface(MpdConnection * p_mpd_connection_pointer)
     progress_box.add(progress_bar);
     
     
-    volume_button.set_label("MADLEN UMYJ STOPY!");
     
     controls_box.pack_start(button_prev, false, false, 0);
     controls_box.pack_start(button_play, false, false, 0);
@@ -82,7 +85,7 @@ TopInterface::TopInterface(MpdConnection * p_mpd_connection_pointer)
     info_box.pack_start(subtitle, false, false, 0);
     
     show_all();
-    //this->UpdateButtonsVisibility();
+    this->UpdateButtonsVisibility();
     this->UpdateTitle();
 }
 
@@ -93,18 +96,17 @@ TopInterface::~TopInterface()
 void TopInterface::UpdateButtonsVisibility()
 {
     mpd_state my_mpd_state = mpd_connection_pointer->GetMpdState();
-    
     if(my_mpd_state == MPD_STATE_PAUSE){
-        button_pause.set_sensitive(false);
-        button_play.set_sensitive(true);
+        button_pause.hide();
+        button_play.show();
     }
     if(my_mpd_state == MPD_STATE_PLAY){
-        button_pause.set_sensitive(true);
-        button_play.set_sensitive(false);
+        button_pause.show();
+        button_play.hide();
     }
     else{
-        button_play.set_sensitive(true);
-        button_pause.set_sensitive(false);
+        button_play.show();
+        button_pause.hide();
     }
 }
 

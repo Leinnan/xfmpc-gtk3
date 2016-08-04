@@ -11,6 +11,8 @@ placeholder_2(false, "Browse database")
     notebook.set_show_tabs (true);
     notebook.append_page(placeholder_1, "Current Playlist");
     notebook.append_page(placeholder_2, "Browse database");
+    
+    show_all();
 }
 
 BottomInterface::~BottomInterface()
