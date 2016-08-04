@@ -108,6 +108,7 @@ void TopInterface::UpdateButtonsVisibility()
         button_play.show();
         button_pause.hide();
     }
+    this->UpdateTitle();
 }
 
 void TopInterface::UpdateTitle(){
@@ -122,10 +123,15 @@ void TopInterface::UpdateTitle(){
     /*s_artist = mpd_song_get_tag(song, MPD_TAG_ARTIST, 0);
     s_album = mpd_song_get_tag(song, MPD_TAG_ALBUM, 0);
     s_title = mpd_song_get_tag(song, MPD_TAG_TITLE, 0);*/
-    s_artist = "Bonson";
-    s_album = "ZNANY I LUBIANY";
-    s_title = "Wow!";
-    s_year = "2016";
+    song current_song = mpd_connection_pointer->GetCurrentSong();
+    s_artist = current_song.artist;
+    s_album = current_song.album;
+    s_title = current_song.title;
+    s_year = std::to_string(current_song.date);
+    
+    float time_elapsed_percent = (float)current_song.elapsed / (float)current_song.total;
+    
+    progress_bar.set_fraction(time_elapsed_percent);
     
     new_title = "<span size=\"x-large\"><b>" + s_title + "</b></span>";
     new_subtitle = "<span size=\"medium\">" + s_artist + "- " + s_album + "[" + s_year +  "]</span>";

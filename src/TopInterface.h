@@ -4,6 +4,7 @@
 #include "SettingsButtonMenu.h"
 #include "MpdConnection.h"
 #include <mpd/client.h>
+#include <string>
 
 class TopInterface : public Gtk::Box
 {
